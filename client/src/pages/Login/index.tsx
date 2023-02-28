@@ -49,7 +49,7 @@ const Login: React.FC = () => {
       loginTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
       ...profile!,
     };
-    axios.post('http://localhost:8080/userdata', userDetails);
+    axios.post(`${process.env.REACT_APP_API_URL}/userdata`, userDetails);
     console.log('done axios');
     navigate('/data/profile');
   };
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
           const now = new Date().getTime();
           localStorage.setItem('lastLoginTime', now.toString());
 
-          let subres = await axios.get(`http://localhost:8080/getuser?email=${res.data.email}`);
+          let subres = await axios.get(`${process.env.REACT_APP_API_URL}/getuser?email=${res.data.email}`);
 
           if (subres?.data?.Gender) {
             setGotDetail(true);

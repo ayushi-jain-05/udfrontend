@@ -17,7 +17,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/fetchdata/${updateemail}`)
+      .get(`${process.env.REACT_APP_API_URL}/fetchdata/${updateemail}`)
       .then((res) => {
         setFirstName(res.data.firstName);
         setLastName(res.data.lastName);
@@ -40,7 +40,7 @@ function Profile() {
   useEffect(() => {
     
     axios
-      .get("http://localhost:8080/userdata/")
+      .get(`${process.env.REACT_APP_API_URL}/userdata/`)
       .then((res) => {
         const { firstName, lastName, mobileNumber, dob, gender,aboutme,image } = res.data;
         setFirstName(firstName);
@@ -68,7 +68,7 @@ function Profile() {
     formData.append("gender", gender);
     formData.append("aboutme", aboutme);
     axios
-      .patch(`http://localhost:8080/editprofile/${updateemail}`, formData)
+      .patch(`${process.env.REACT_APP_API_URL}/editprofile/${updateemail}`, formData)
       .then((res) => {
         const { firstName, lastName, mobileNumber, dob, gender,aboutme,image } = res.data;
         setFirstName(firstName);

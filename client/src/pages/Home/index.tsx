@@ -162,7 +162,7 @@ export default function UserProfile() {
         <td>{el.email}</td> 
         <td>{el.Mobile}</td>
         <td>{el.aboutme}</td>
-        <td><img src={el.image?`http://localhost:8080/${el.image}`:el.google_image} alt="profile" width="100" height="100" /></td>
+        <td><img src={el.image?`${process.env.REACT_APP_API_URL}${el.image}`:el.google_image} alt="profile" width="100" height="100" /></td>
 
       </tr>
     ))}
