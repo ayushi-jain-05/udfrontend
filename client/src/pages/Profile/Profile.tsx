@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar  from '../Navbar/index.js';
+
 
 function Profile() {
   const updateemail = localStorage.getItem("email1");
@@ -85,6 +87,8 @@ function Profile() {
   
   
   return (
+    <>
+    <Navbar/><br></br>
     <div>
       <form onSubmit={handleSubmit} className="form-group">
         <div className="form-group">
@@ -128,20 +132,21 @@ function Profile() {
   </div>
      <div className="form-group">
         <label htmlFor="dob">Birth Date:</label>
-     <input type="text" className="form-control" id="dob" value={dob} onChange={e => setDOB(e.target.value)} />
+     <input type="text" className="form-control" id="date_Of_Birth" value={dob} onChange={e => setDOB(e.target.value)} />
      </div>
      <div className="form-group">
-       <label htmlFor="aboutme">About Me:</label>
-       <input type="text" className="form-control" id="aboutme" value={aboutme} onChange={e => setaboutMe(e.target.value)} />
-     </div>
+  <label htmlFor="aboutme">About Me:</label>
+  <textarea className="form-control" id="about_Me" value={aboutme} onChange={e => setaboutMe(e.target.value)} />
+</div>
      <div className="form-group">
     <label htmlFor="profileImage">Profile Image:</label>
-    <input name ="profileImage" type="file" onChange={handleImageChange} />
+    <input name ="profile_Image" type="file" onChange={handleImageChange} />
   </div>
      <br></br>
      <button type="submit" className="btn btn-primary">Save</button>
    </form>
      </div>
+     </>
   )
 }
 export default Profile
